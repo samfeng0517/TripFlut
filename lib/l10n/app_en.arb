@@ -1,0 +1,6 @@
+{
+    "trip_list_title": "Trips",
+    "@trip_list_title": {
+        "description": "Title of trip list page"
+    }
+}
