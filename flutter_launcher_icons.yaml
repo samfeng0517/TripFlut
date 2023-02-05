@@ -1,0 +1,25 @@
+flutter_icons:
+  image_path: "assets/icon/trip_flut_icon.png"
+  # Android
+  android: true
+  min_sdk_android: 21
+  adaptive_icon_background: "#737373"
+  adaptive_icon_foreground: "assets/icon/trip_flut_icon.png"
+  # iOS
+  ios: true
+  remove_alpha_ios: true
+  # Web
+  web:
+    generate: true
+    image_path: "assets/icon/trip_flut_icon.png"
+    background_color: "#737373"
+    theme_color: "#7cccdd"
+  # Windows
+  windows:
+    generate: true
+    image_path: "assets/icon/trip_flut_icon.png"
+    icon_size: 48
+  # MacOS
+  macos:
+    generate: true
+    image_path: "assets/icon/trip_flut_icon.png"
