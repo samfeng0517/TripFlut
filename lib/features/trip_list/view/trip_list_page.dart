@@ -1,9 +1,10 @@
+import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:tripflut/common_widgets/floating_add_button/floating_add_button.dart';
 import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_extended.dart';
 import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_large.dart';
+
+import '../../../common_widgets/floating_add_button/floating_add_button.dart';
 
 class TripListPage extends StatelessWidget {
   const TripListPage({super.key});
@@ -25,51 +26,44 @@ class TripListPage extends StatelessWidget {
           ),
         ],
       ),
-      body: AdaptiveLayout(
-        bottomNavigation: SlotLayout(
-          config: <Breakpoint, SlotLayoutConfig>{
-            Breakpoints.small: SlotLayout.from(
-              key: const Key('Trip List Page FAB Small'),
-              builder: (context) => SafeArea(
-                child: Container(
-                  padding: const EdgeInsets.only(right: 16, bottom: 16),
-                  alignment: Alignment.bottomRight,
-                  child: const FloatingAddButton(),
-                ),
-              ),
-            ),
-            Breakpoints.medium: SlotLayout.from(
-              key: const Key('Trip List Page FAB Medium'),
-              inAnimation: (child, animation) =>
-                  AdaptiveScaffold.bottomToTop(child, animation),
-              outAnimation: (child, animation) =>
-                  AdaptiveScaffold.topToBottom(child, animation),
-              builder: (context) => SafeArea(
-                child: Container(
-                  padding: const EdgeInsets.only(right: 16, bottom: 16),
-                  alignment: Alignment.bottomRight,
-                  child: const FloatingAddButtonExtended(),
-                ),
-              ),
-            ),
-          },
-        ),
-        primaryNavigation: SlotLayout(
-          config: <Breakpoint, SlotLayoutConfig>{
-            Breakpoints.largeDesktop: SlotLayout.from(
-              key: const Key('Trip List Page FAB Large'),
-              builder: (context) => const SafeArea(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 16, left: 16),
-                  child: FloatingAddButtonLarge(
-                    elevation: 1,
-                  ),
-                ),
-              ),
-            ),
-          },
-        ),
+      floatingActionButton: LayoutBuilder(
+        builder: (BuildContext context, _) {
+          var windowType = getWindowType(context);
+          switch (windowType) {
+            case AdaptiveWindowType.large:
+            case AdaptiveWindowType.xlarge:
+            case AdaptiveWindowType.medium:
+              return const Padding(
+                padding: EdgeInsets.only(top: kToolbarHeight),
+                child: FloatingAddButtonLarge(),
+              );
+
+            case AdaptiveWindowType.small:
+              return const FloatingAddButtonExtended();
+
+            case AdaptiveWindowType.xsmall:
+            default:
+              return const FloatingAddButton();
+          }
+        },
       ),
+      floatingActionButtonLocation: _getFloatingButtonLocation(context),
     );
+  }
+
+  FloatingActionButtonLocation? _getFloatingButtonLocation(
+      BuildContext context) {
+    var windowType = getWindowType(context);
+    switch (windowType) {
+      case AdaptiveWindowType.large:
+      case AdaptiveWindowType.xlarge:
+      case AdaptiveWindowType.medium:
+        return FloatingActionButtonLocation.startTop;
+
+      case AdaptiveWindowType.small:
+      case AdaptiveWindowType.xsmall:
+      default:
+        return FloatingActionButtonLocation.endFloat;
+    }
   }
 }
