@@ -2,5 +2,6 @@
     "trip_list_title": "旅行清單",
     "settings": "設定",
     "add": "新增",
-    "create": "建立"
+    "create": "建立",
+    "trip_name": "旅行名稱"
 }

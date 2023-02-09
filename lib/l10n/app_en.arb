@@ -5,5 +5,9 @@
     },
     "settings": "Settings",
     "add": "Add",
-    "create": "Create"
+    "create": "Create",
+    "trip_name": "Trip name",
+    "@trip_name": {
+        "description": "Label or hint here is trip name"
+    }
 }
