@@ -35,7 +35,9 @@ class TripListPage extends StatelessWidget {
             case AdaptiveWindowType.medium:
               return const Padding(
                 padding: EdgeInsets.only(top: kToolbarHeight),
-                child: FloatingAddButtonLarge(),
+                child: FloatingAddButtonLarge(
+                  elevation: 1,
+                ),
               );
 
             case AdaptiveWindowType.small:
@@ -51,8 +53,7 @@ class TripListPage extends StatelessWidget {
     );
   }
 
-  FloatingActionButtonLocation? _getFloatingButtonLocation(
-      BuildContext context) {
+  FloatingActionButtonLocation? _getFloatingButtonLocation(BuildContext context) {
     var windowType = getWindowType(context);
     switch (windowType) {
       case AdaptiveWindowType.large:
