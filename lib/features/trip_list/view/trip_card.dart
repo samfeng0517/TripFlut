@@ -44,7 +44,7 @@ class TripCard extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(16),
               child: Text(
                 trip.title,
                 style: Theme.of(context).textTheme.displaySmall,
@@ -52,7 +52,7 @@ class TripCard extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Row(
                 children: [
                   Text(
