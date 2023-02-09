@@ -1,9 +1,9 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_extended.dart';
 import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_large.dart';
+import 'package:tripflut/utils/app_localizations_context.dart';
 
 import '../../../common_widgets/floating_add_button/floating_add_button.dart';
 import '../model/trip.dart';
@@ -30,7 +30,7 @@ class TripListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context)!.trip_list_title,
+          context.loc.trip_list_title,
         ),
         actions: [
           IconButton(
@@ -38,7 +38,7 @@ class TripListPage extends StatelessWidget {
             icon: const Icon(
               Icons.settings_outlined,
             ),
-            tooltip: AppLocalizations.of(context)!.settings,
+            tooltip: context.loc.settings,
           ),
         ],
       ),
@@ -49,7 +49,8 @@ class TripListPage extends StatelessWidget {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (windowType != AdaptiveWindowType.xsmall && windowType != AdaptiveWindowType.small)
+                if (windowType != AdaptiveWindowType.xsmall &&
+                    windowType != AdaptiveWindowType.small)
                   const Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 8),
                     child: FloatingAddButtonLarge(
@@ -93,7 +94,8 @@ class TripListPage extends StatelessWidget {
     );
   }
 
-  FloatingActionButtonLocation? _getFloatingButtonLocation(BuildContext context) {
+  FloatingActionButtonLocation? _getFloatingButtonLocation(
+      BuildContext context) {
     var windowType = getWindowType(context);
     switch (windowType) {
       case AdaptiveWindowType.large:

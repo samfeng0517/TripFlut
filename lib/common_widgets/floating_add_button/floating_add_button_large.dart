@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripflut/utils/app_localizations_context.dart';
 
 class FloatingAddButtonLarge extends StatelessWidget {
   final void Function()? onPressed;
@@ -15,7 +15,7 @@ class FloatingAddButtonLarge extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton.large(
       onPressed: () {},
-      tooltip: AppLocalizations.of(context)!.add,
+      tooltip: context.loc.add,
       elevation: elevation,
       child: const Icon(Icons.add),
     );

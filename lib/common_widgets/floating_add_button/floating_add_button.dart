@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:tripflut/utils/app_localizations_context.dart';
 
 class FloatingAddButton extends StatelessWidget {
   final void Function()? onPressed;
@@ -13,7 +13,7 @@ class FloatingAddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: onPressed,
-      tooltip: AppLocalizations.of(context)!.add,
+      tooltip: context.loc.add,
       child: const Icon(Icons.add),
     );
   }
