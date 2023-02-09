@@ -52,6 +52,28 @@ class MainApp extends ConsumerWidget {
         ),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        localeListResolutionCallback: (locales, supportedLocales) {
+          if (locales == null || locales.isEmpty) {
+            return const Locale('en');
+          }
+
+          for (var locale in locales) {
+            if (locale.languageCode == 'zh') {
+              if (locale.scriptCode == 'Hant') {
+                return const Locale('zh');
+              } else if (locale.scriptCode == 'Hans') {
+                return const Locale('zh', 'CN');
+              } else if (locale.countryCode == 'TW' ||
+                  locale.countryCode == 'HK') {
+                return const Locale('zh');
+              } else {
+                return const Locale('zh', 'CN');
+              }
+            }
+          }
+
+          return const Locale('en');
+        },
       ),
     );
   }
