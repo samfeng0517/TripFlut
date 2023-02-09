@@ -1,5 +1,6 @@
 {
-    "trip_list_title": "行程",
+    "trip_list_title": "旅行清單",
     "settings": "設定",
-    "add": "新增"
+    "add": "新增",
+    "create": "建立"
 }
