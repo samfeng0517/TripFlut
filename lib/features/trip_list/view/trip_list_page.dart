@@ -1,11 +1,13 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
-import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_extended.dart';
-import 'package:tripflut/common_widgets/floating_add_button/floating_add_button_large.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
 import '../../../common_widgets/floating_add_button/floating_add_button.dart';
+import '../../../common_widgets/floating_add_button/floating_add_button_extended.dart';
+import '../../../common_widgets/floating_add_button/floating_add_button_large.dart';
+import '../../create_trip/view/create_trip_view.dart';
 import '../model/trip.dart';
 import 'trip_card.dart';
 
@@ -22,7 +24,7 @@ class TripListPage extends StatelessWidget {
           title: 'Trip $index',
           startTime: DateTime.now(),
           endTime: DateTime.now().add(const Duration(days: 8)),
-          color: '#2196F3',
+          color: 4294951175,
         ),
       ),
     );
@@ -49,8 +51,7 @@ class TripListPage extends StatelessWidget {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (windowType != AdaptiveWindowType.xsmall &&
-                    windowType != AdaptiveWindowType.small)
+                if (windowType != AdaptiveWindowType.xsmall && windowType != AdaptiveWindowType.small)
                   const Padding(
                     padding: EdgeInsets.only(top: 16, left: 16, right: 8),
                     child: FloatingAddButtonLarge(
@@ -86,7 +87,22 @@ class TripListPage extends StatelessWidget {
 
             case AdaptiveWindowType.xsmall:
             default:
-              return const FloatingAddButton();
+              return OpenContainer(
+                closedBuilder: (_, openContainer) => const FloatingAddButton(),
+                closedElevation: 6,
+                closedShape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                closedColor: Theme.of(context).colorScheme.primaryContainer,
+                openBuilder: (context, closeContainer) => Dialog.fullscreen(
+                  child: CreateTripView(
+                    closeOnPressed: closeContainer,
+                    saveOnPressed: () {},
+                  ),
+                ),
+                openColor: Theme.of(context).dialogBackgroundColor,
+                transitionType: ContainerTransitionType.fadeThrough,
+              );
           }
         },
       ),
@@ -94,8 +110,7 @@ class TripListPage extends StatelessWidget {
     );
   }
 
-  FloatingActionButtonLocation? _getFloatingButtonLocation(
-      BuildContext context) {
+  FloatingActionButtonLocation? _getFloatingButtonLocation(BuildContext context) {
     var windowType = getWindowType(context);
     switch (windowType) {
       case AdaptiveWindowType.large:
