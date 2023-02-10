@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
@@ -28,14 +27,14 @@ class TripCard extends ConsumerWidget {
                     bottomLeft: Radius.circular(12),
                     bottomRight: Radius.circular(12),
                   ),
-                  color: HexColor(trip.color),
+                  color: Color(trip.color),
                 ),
                 width: double.infinity,
                 child: trip.imageUrl != null
                     ? CachedNetworkImage(
                         imageUrl: trip.imageUrl!,
                         placeholder: (context, url) => Shimmer.fromColors(
-                          baseColor: HexColor(trip.color),
+                          baseColor: Color(trip.color),
                           highlightColor: Theme.of(context).highlightColor,
                           child: const SizedBox.expand(),
                         ),

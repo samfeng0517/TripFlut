@@ -10,6 +10,6 @@ class Trip with _$Trip {
     required DateTime startTime,
     required DateTime endTime,
     String? imageUrl,
-    required String color,
+    required int color,
   }) = _Trip;
 }

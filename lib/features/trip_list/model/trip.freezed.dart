@@ -21,7 +21,7 @@ mixin _$Trip {
   DateTime get startTime => throw _privateConstructorUsedError;
   DateTime get endTime => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
-  String get color => throw _privateConstructorUsedError;
+  int get color => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TripCopyWith<Trip> get copyWith => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $TripCopyWith<$Res> {
       DateTime startTime,
       DateTime endTime,
       String? imageUrl,
-      String color});
+      int color});
 }
 
 /// @nodoc
@@ -85,7 +85,7 @@ class _$TripCopyWithImpl<$Res, $Val extends Trip>
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ) as $Val);
   }
 }
@@ -102,7 +102,7 @@ abstract class _$$_TripCopyWith<$Res> implements $TripCopyWith<$Res> {
       DateTime startTime,
       DateTime endTime,
       String? imageUrl,
-      String color});
+      int color});
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$$_TripCopyWithImpl<$Res> extends _$TripCopyWithImpl<$Res, _$_Trip>
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
     ));
   }
 }
@@ -172,7 +172,7 @@ class _$_Trip implements _Trip {
   @override
   final String? imageUrl;
   @override
-  final String color;
+  final int color;
 
   @override
   String toString() {
@@ -212,7 +212,7 @@ abstract class _Trip implements Trip {
       required final DateTime startTime,
       required final DateTime endTime,
       final String? imageUrl,
-      required final String color}) = _$_Trip;
+      required final int color}) = _$_Trip;
 
   @override
   String get id;
@@ -225,7 +225,7 @@ abstract class _Trip implements Trip {
   @override
   String? get imageUrl;
   @override
-  String get color;
+  int get color;
   @override
   @JsonKey(ignore: true)
   _$$_TripCopyWith<_$_Trip> get copyWith => throw _privateConstructorUsedError;
