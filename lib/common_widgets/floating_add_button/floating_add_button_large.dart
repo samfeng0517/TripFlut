@@ -14,7 +14,7 @@ class FloatingAddButtonLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.large(
-      onPressed: () {},
+      onPressed: onPressed,
       tooltip: context.loc.add,
       elevation: elevation,
       child: const Icon(Icons.add),

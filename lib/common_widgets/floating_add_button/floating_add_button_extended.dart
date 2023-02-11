@@ -12,7 +12,7 @@ class FloatingAddButtonExtended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
-      onPressed: () {},
+      onPressed: onPressed,
       icon: const Icon(Icons.add),
       label: Text(context.loc.add),
     );
