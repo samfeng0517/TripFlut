@@ -45,3 +45,4 @@ app.*.map.json
 
 # secure keys
 *.env
+env.g.dart
