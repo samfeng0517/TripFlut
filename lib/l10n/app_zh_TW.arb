@@ -3,5 +3,22 @@
     "settings": "設定",
     "add": "新增",
     "create": "建立",
-    "trip_name": "旅行名稱"
+    "trip_name": "旅行名稱",
+    "close": "關閉",
+    "create_new_trip": "建立新旅行",
+    "start": "開始",
+    "end": "結束",
+    "set_dates": "設定日期",
+    "cover": "封面",
+    "choose_picture_or_color": "選擇圖片或顏色",
+    "image": "圖片",
+    "color": "顏色",
+    "search": "搜尋",
+    "photos_provided_by_Pexels": "照片由 Pexels 提供",
+    "try_again": "再試一次",
+    "error_title": "出錯了...",
+    "error_message": "遇到未知的錯誤。\n請稍後再試。",
+    "no_items_found": "空空如也",
+    "list_is_empty": "列表沒有東西。",
+    "error_and_tap_to_try_again": "出了些問題。 點擊重試。"
 }

@@ -13,4 +13,11 @@ class CreateTripController extends _$CreateTripController {
   void setTripTitle(String text) {
     state = AsyncValue.data(state.value!.copyWith(title: text));
   }
+
+  void setTripRange(DateTime startTime, DateTime endTime) {
+    state = AsyncValue.data(state.value!.copyWith(
+      startTime: startTime,
+      endTime: endTime,
+    ));
+  }
 }

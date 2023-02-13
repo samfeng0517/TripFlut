@@ -1,13 +1,13 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
 import '../../../common_widgets/floating_add_button/floating_add_button.dart';
 import '../../../common_widgets/floating_add_button/floating_add_button_extended.dart';
 import '../../../common_widgets/floating_add_button/floating_add_button_large.dart';
-import '../../create_trip/view/create_trip_view.dart';
+import '../../create_trip/view/create_trip_dialog.dart';
 import '../model/trip.dart';
 import 'trip_card.dart';
 
@@ -51,11 +51,14 @@ class TripListPage extends StatelessWidget {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (windowType != AdaptiveWindowType.xsmall && windowType != AdaptiveWindowType.small)
-                  const Padding(
-                    padding: EdgeInsets.only(top: 16, left: 16, right: 8),
+                if (windowType != AdaptiveWindowType.xsmall &&
+                    windowType != AdaptiveWindowType.small)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, left: 16, right: 8),
                     child: FloatingAddButtonLarge(
                       elevation: 1,
+                      onPressed: () =>
+                          _openCreateTripDialog(context, Alignment.topLeft),
                     ),
                   ),
                 Expanded(
@@ -83,25 +86,16 @@ class TripListPage extends StatelessWidget {
               return const SizedBox.shrink();
 
             case AdaptiveWindowType.small:
-              return const FloatingAddButtonExtended();
+              return FloatingAddButtonExtended(
+                onPressed: () =>
+                    _openCreateTripDialog(context, Alignment.bottomRight),
+              );
 
             case AdaptiveWindowType.xsmall:
             default:
-              return OpenContainer(
-                closedBuilder: (_, openContainer) => const FloatingAddButton(),
-                closedElevation: 6,
-                closedShape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                ),
-                closedColor: Theme.of(context).colorScheme.primaryContainer,
-                openBuilder: (context, closeContainer) => Dialog.fullscreen(
-                  child: CreateTripView(
-                    closeOnPressed: closeContainer,
-                    saveOnPressed: () {},
-                  ),
-                ),
-                openColor: Theme.of(context).dialogBackgroundColor,
-                transitionType: ContainerTransitionType.fadeThrough,
+              return FloatingAddButton(
+                onPressed: () =>
+                    _openCreateTripDialog(context, Alignment.bottomRight),
               );
           }
         },
@@ -110,7 +104,8 @@ class TripListPage extends StatelessWidget {
     );
   }
 
-  FloatingActionButtonLocation? _getFloatingButtonLocation(BuildContext context) {
+  FloatingActionButtonLocation? _getFloatingButtonLocation(
+      BuildContext context) {
     var windowType = getWindowType(context);
     switch (windowType) {
       case AdaptiveWindowType.large:
@@ -123,5 +118,23 @@ class TripListPage extends StatelessWidget {
       default:
         return FloatingActionButtonLocation.endFloat;
     }
+  }
+
+  Future<void> _openCreateTripDialog(
+      BuildContext context, Alignment alignment) async {
+    await showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      transitionBuilder: (context, animation, secondaryAnimation, child) =>
+          ScaleTransition(
+        scale: animation,
+        alignment: alignment,
+        child: child,
+      ),
+      pageBuilder: (context, _, __) => CreateTripDialog(
+        closeOnPressed: () => context.pop(),
+        actionOnPressed: () {},
+      ),
+    );
   }
 }

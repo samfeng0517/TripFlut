@@ -9,5 +9,49 @@
     "trip_name": "Trip name",
     "@trip_name": {
         "description": "Label or hint here is trip name"
+    },
+    "close": "Close",
+    "create_new_trip": "Create new trip",
+    "@create_new_trip": {
+        "description": "Title for create_trip_dialog"
+    },
+    "start": "Start",
+    "end": "End",
+    "set_dates": "Set Dates",
+    "@set_dates": {
+        "description": "Set dates button hint in create_trip_dialog"
+    },
+    "cover": "Cover",
+    "choose_picture_or_color": "Choose image or color",
+    "@choose_picture_or_color": {
+        "description": "showPickImageColorDialog button hint in create_trip_dialog"
+    },
+    "image": "Image",
+    "color": "Color",
+    "search": "Search",
+    "photos_provided_by_Pexels": "Photos provided by Pexels",
+    "@photos_provided_by": {
+        "description": "License hint in image list"
+    },
+    "try_again": "Try Again",
+    "error_title": "Something went wrong",
+    "@error_title": {
+        "description": "General error title"
+    },
+    "error_message": "An unknown error was encountered.\nPlease try again later.",
+    "@error_message": {
+        "description": "General error message"
+    },
+    "no_items_found": "No items found",
+    "@no_items_found": {
+        "description": "General title when list is empty"
+    },
+    "list_is_empty": "The list is empty.",
+    "@list_is_empty": {
+        "description": "General message when list is empty"
+    },
+    "error_and_tap_to_try_again": "Something went wrong. Tap to try again.",
+    "@error_and_tap_to_try_again": {
+        "description": "General message when error and tap text can try again"
     }
 }

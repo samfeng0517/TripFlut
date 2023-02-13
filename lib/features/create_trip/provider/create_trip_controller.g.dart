@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String _$CreateTripControllerHash() =>
-    r'638e78b5dc2a0000fc74851e7de6e43711c50182';
+    r'30527700efa097a094bc7606f84372a1974e0e93';
 
 /// See also [CreateTripController].
 final createTripControllerProvider =

@@ -3,5 +3,22 @@
     "settings": "设置",
     "add": "添加",
     "create": "创建",
-    "trip_name": "旅行名称"
+    "trip_name": "旅行名称",
+    "close": "关闭",
+    "create_new_trip": "创建新旅行",
+    "start": "开始",
+    "end": "结束",
+    "set_dates": "设定日期",
+    "cover": "封面",
+    "choose_picture_or_color": "选择图像或颜色",
+    "image": "图像",
+    "color": "颜色",
+    "search": "搜索",
+    "photos_provided_by_Pexels": "Pexels 提供的照片",
+    "try_again": "再试一次",
+    "error_title": "出了些问题",
+    "error_message": "遇到未知错误。\n请稍后再试。",
+    "no_items_found": "未找到任何项目",
+    "list_is_empty": "列表为空。",
+    "error_and_tap_to_try_again": "出了些问题。 点击重试。"
 }
