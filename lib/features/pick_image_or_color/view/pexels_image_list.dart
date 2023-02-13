@@ -6,6 +6,7 @@ import 'package:tripflut/common_widgets/error_indicator.dart';
 import 'package:tripflut/common_widgets/small_error_indicator.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 
 import '../model/pexels_photo.dart';
 import '../provider/pexels_images_repository.dart';
@@ -23,18 +24,23 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
   final PagingController<int, PexelsPhoto> _pagingController =
       PagingController(firstPageKey: 1);
 
+  String _keyWord = 'travel';
+  String _locale = 'en-US';
+
   @override
   void initState() {
     super.initState();
-    _pagingController
-        .addPageRequestListener((pageKey) => _fetchPage('travel', pageKey));
+    _pagingController.addPageRequestListener((pageKey) => _fetchPage(pageKey));
   }
 
-  Future<void> _fetchPage(String keyWord, int pageKey) async {
+  Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems = await ref
-          .read(pexelsImagesRepoProvider)
-          .fetchImageSearchList('travel', pageKey);
+      final newItems =
+          await ref.read(pexelsImagesRepoProvider).fetchImageSearchList(
+                keyWord: _keyWord,
+                pageKey: pageKey,
+                locale: _locale,
+              );
 
       final isLastPage = newItems.length < _pageSize;
       if (isLastPage) {
@@ -61,12 +67,14 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
                 labelText: context.loc.search,
                 filled: true,
               ),
+              onChanged: (value) => _updateSearch(context, value),
             ),
           ),
         ),
         Expanded(
           child: PagedGridView(
             pagingController: _pagingController,
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             builderDelegate: PagedChildBuilderDelegate<PexelsPhoto>(
               itemBuilder: (context, item, index) => Card(
@@ -132,9 +140,34 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
     );
   }
 
+  void _updateSearch(BuildContext context, String value) {
+    EasyDebounce.debounce(
+      'pexels_image_search',
+      const Duration(milliseconds: 500),
+      () {
+        if (value.isEmpty) {
+          _keyWord = 'travel';
+          _locale = 'en-US';
+        } else {
+          _keyWord = value;
+          Locale mylocale = Localizations.localeOf(context);
+          if (mylocale == const Locale('zh', 'TW')) {
+            _locale = 'zh-TW';
+          } else if (mylocale == const Locale('zh')) {
+            _locale = 'zh-CN';
+          } else {
+            _locale = 'en-US';
+          }
+        }
+        _pagingController.refresh();
+      },
+    );
+  }
+
   @override
   void dispose() {
     _pagingController.dispose();
+    EasyDebounce.cancel('pexels_image_search');
     super.dispose();
   }
 }

@@ -12,13 +12,17 @@ class PexelsImagesRepository {
     headers: {'Authorization': Env.pexelsApiKey},
   ));
 
-  Future<List<PexelsPhoto>> fetchImageSearchList(
-      String keyWord, int pageKey) async {
+  Future<List<PexelsPhoto>> fetchImageSearchList({
+    required String keyWord,
+    required int pageKey,
+    required String locale,
+  }) async {
     var response = await _dio.get(
       'https://api.pexels.com/v1/search',
       queryParameters: {
         'query': keyWord,
         'page': pageKey,
+        'locale': locale,
       },
     );
 

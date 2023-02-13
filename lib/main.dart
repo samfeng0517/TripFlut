@@ -67,7 +67,7 @@ class MainApp extends ConsumerWidget {
                   locale.countryCode == 'HK') {
                 return const Locale('zh', 'TW');
               } else {
-                return const Locale('zh', 'CN');
+                return const Locale('zh');
               }
             }
           }
