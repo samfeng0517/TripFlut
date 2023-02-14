@@ -13,15 +13,15 @@ class TripCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return AspectRatio(
-      aspectRatio: 4 / 3,
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              child: AspectRatio(
+                aspectRatio: 2 / 1,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.only(
@@ -43,41 +43,41 @@ class TripCard extends ConsumerWidget {
                       : null,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: Text(
-                  trip.title,
-                  style: Theme.of(context).textTheme.displaySmall,
-                  maxLines: 2,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+              child: Text(
+                trip.title,
+                style: Theme.of(context).textTheme.displaySmall,
+                maxLines: 2,
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                child: Row(
-                  children: [
-                    Text(
-                      DateFormat.Md().format(trip.startTime),
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: Theme.of(context).textTheme.titleLarge?.fontSize,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      DateFormat.Md().format(trip.endTime),
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              child: Row(
+                children: [
+                  Text(
+                    DateFormat.Md().format(trip.startTime),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Icon(
+                    Icons.arrow_forward,
+                    size: Theme.of(context).textTheme.titleLarge?.fontSize,
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    DateFormat.Md().format(trip.endTime),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

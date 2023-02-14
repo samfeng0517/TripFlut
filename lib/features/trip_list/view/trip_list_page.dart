@@ -63,7 +63,7 @@ class TripListPage extends StatelessWidget {
                   ),
                 Expanded(
                   child: ResponsiveGridList(
-                    minItemWidth: 300,
+                    minItemWidth: 400,
                     horizontalGridSpacing: 8,
                     verticalGridSpacing: 8,
                     horizontalGridMargin: 8,
