@@ -51,7 +51,7 @@ class PickImageColorDialog extends ConsumerWidget {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
               child: SegmentedButton<int>(
                 segments: [
                   ButtonSegment<int>(
@@ -80,6 +80,10 @@ class PickImageColorDialog extends ConsumerWidget {
                   ColorPickerView(Theme.of(context).colorScheme.primary),
                 ],
               ),
+            ),
+            const Divider(
+              thickness: 1,
+              height: 8,
             ),
             SizedBox(
               width: double.infinity,
