@@ -4,79 +4,54 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
+import '../provider/segmented_index_provider.dart';
+import 'color_picker_view.dart';
 import 'pexels_image_view.dart';
 
 Future<dynamic> showPickImageColorDialog(BuildContext context) async {
   return await showDialog(
     context: context,
-    builder: (context) {
-      return LayoutBuilder(
-        builder: (context, constraints) {
-          var windowType = getWindowType(context);
-          EdgeInsets padding;
-          BoxConstraints? constraints;
-          RoundedRectangleBorder? shape;
+    builder: (context) => LayoutBuilder(
+      builder: (context, constraints) {
+        var windowType = getWindowType(context);
+        switch (windowType) {
+          case AdaptiveWindowType.large:
+          case AdaptiveWindowType.xlarge:
+          case AdaptiveWindowType.medium:
+            return const Dialog(
+              insetPadding: EdgeInsets.all(48),
+              clipBehavior: Clip.antiAlias,
+              child: PickImageColorDialog(),
+            );
 
-          switch (windowType) {
-            case AdaptiveWindowType.large:
-            case AdaptiveWindowType.xlarge:
-            case AdaptiveWindowType.medium:
-              padding =
-                  const EdgeInsets.fromLTRB(48, 48 + kToolbarHeight, 48, 48);
-              constraints = const BoxConstraints(
-                  maxHeight: 560 - kToolbarHeight, maxWidth: 560);
-              break;
-
-            case AdaptiveWindowType.small:
-            case AdaptiveWindowType.xsmall:
-            default:
-              padding = const EdgeInsets.only(top: kToolbarHeight);
-              shape = const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(28.0),
-                  topLeft: Radius.circular(28.0),
-                ),
-              );
-              break;
-          }
-
-          return Dialog(
-            insetPadding: padding,
-            clipBehavior: Clip.antiAlias,
-            shape: shape,
-            child: PickImageColorView(
-              constraints: constraints,
-            ),
-          );
-        },
-      );
-    },
+          case AdaptiveWindowType.small:
+          case AdaptiveWindowType.xsmall:
+          default:
+            return const Dialog.fullscreen(
+              child: PickImageColorDialog(),
+            );
+        }
+      },
+    ),
   );
 }
 
-class PickImageColorView extends ConsumerWidget {
-  final BoxConstraints? constraints;
-  const PickImageColorView({this.constraints, super.key});
+class PickImageColorDialog extends ConsumerWidget {
+  const PickImageColorDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final index = ref.watch(segmentedIndexProvider);
+
     return Container(
-      constraints: constraints,
       color: Theme.of(context).colorScheme.surface,
+      constraints: const BoxConstraints(maxHeight: 560, maxWidth: 560),
       child: SafeArea(
         child: Column(
           children: [
-            AppBar(
-              backgroundColor: Theme.of(context).colorScheme.surface,
-              leading: IconButton(
-                onPressed: () => context.pop(),
-                icon: const Icon(Icons.close),
-                tooltip: context.loc.close,
-              ),
-            ),
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
               child: SegmentedButton<int>(
                 segments: [
                   ButtonSegment<int>(
@@ -90,12 +65,29 @@ class PickImageColorView extends ConsumerWidget {
                     icon: const Icon(Icons.color_lens),
                   ),
                 ],
-                selected: const {0},
-                onSelectionChanged: (p0) {},
+                selected: {index},
+                onSelectionChanged: (p0) => ref
+                    .read(segmentedIndexProvider.notifier)
+                    .updateIndex(p0.first),
               ),
             ),
-            const Expanded(
-              child: PexelsImageView(),
+            Flexible(
+              child: IndexedStack(
+                sizing: StackFit.expand,
+                index: index,
+                children: [
+                  const PexelsImageView(),
+                  ColorPickerView(Theme.of(context).colorScheme.primary),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton.icon(
+                onPressed: () => context.pop(),
+                icon: const Icon(Icons.close),
+                label: Text(context.loc.close),
+              ),
             ),
           ],
         ),

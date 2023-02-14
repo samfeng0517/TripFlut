@@ -29,10 +29,6 @@
     "image": "Image",
     "color": "Color",
     "search": "Search",
-    "photos_provided_by_Pexels": "Photos provided by Pexels",
-    "@photos_provided_by": {
-        "description": "License hint in image list"
-    },
     "try_again": "Try Again",
     "error_title": "Something went wrong",
     "@error_title": {
@@ -53,5 +49,6 @@
     "error_and_tap_to_try_again": "Something went wrong. Tap to try again.",
     "@error_and_tap_to_try_again": {
         "description": "General message when error and tap text can try again"
-    }
+    },
+    "apply": "Apply"
 }

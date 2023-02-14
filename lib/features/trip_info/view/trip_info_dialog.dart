@@ -26,7 +26,7 @@ class TripInfoDialog extends ConsumerWidget {
         child: Column(
           children: [
             AppBar(
-              backgroundColor: Theme.of(context).colorScheme.surface,
+              backgroundColor: Colors.transparent,
               leading: IconButton(
                 onPressed: closeOnPressed,
                 icon: const Icon(Icons.close),

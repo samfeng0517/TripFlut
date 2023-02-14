@@ -12,42 +12,44 @@ class TripInfoForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const TripNameTextField(),
-          const SizedBox(
-            height: 24,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(context.loc.start),
-              Text(context.loc.end),
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const SizedBox(
-            width: double.infinity,
-            child: SetTripRangeButton(),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(context.loc.cover),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const SizedBox(
-            width: double.infinity,
-            child: SetCoverButton(),
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const TripNameTextField(),
+            const SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(context.loc.start),
+                Text(context.loc.end),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const SizedBox(
+              width: double.infinity,
+              child: SetTripRangeButton(),
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(context.loc.cover),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const SizedBox(
+              width: double.infinity,
+              child: SetCoverButton(),
+            ),
+          ],
+        ),
       ),
     );
   }

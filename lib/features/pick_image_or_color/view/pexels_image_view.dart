@@ -4,11 +4,11 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:tripflut/common_widgets/error_indicator.dart';
 import 'package:tripflut/common_widgets/small_error_indicator.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 
 import '../model/pexels_photo.dart';
 import '../provider/pexels_images_repository.dart';
+import 'pexels_icon_button.dart';
 import 'pexels_image_item.dart';
 
 class PexelsImageView extends ConsumerStatefulWidget {
@@ -67,22 +67,32 @@ class _PexelsImageListState extends ConsumerState<PexelsImageView> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: Material(
-            child: TextField(
-              decoration: InputDecoration(
-                labelText: context.loc.search,
-                filled: true,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            children: [
+              const PexelsIconButton(),
+              const SizedBox(
+                width: 8,
               ),
-              onChanged: (value) => _updateSearch(context, value),
-            ),
+              Expanded(
+                child: Material(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: context.loc.search,
+                      filled: true,
+                    ),
+                    onChanged: (value) => _updateSearch(context, value),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         Expanded(
           child: PagedGridView(
             pagingController: _pagingController,
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             builderDelegate: PagedChildBuilderDelegate<PexelsPhoto>(
               itemBuilder: (context, item, index) => PexelsImageItem(
                 pexelsPhoto: item,
@@ -100,18 +110,13 @@ class _PexelsImageListState extends ConsumerState<PexelsImageView> {
                 message: context.loc.list_is_empty,
               ),
             ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300,
               mainAxisSpacing: 8,
               crossAxisSpacing: 8,
               childAspectRatio: 1.33,
             ),
           ),
-        ),
-        TextButton(
-          onPressed: () async =>
-              await launchUrlString('https://www.pexels.com'),
-          child: Text(context.loc.photos_provided_by_Pexels),
         ),
       ],
     );

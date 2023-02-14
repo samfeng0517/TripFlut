@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trip_info_controller.dart';
+part of 'segmented_index_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,21 +29,19 @@ class _SystemHash {
   }
 }
 
-String _$TripInfoControllerHash() =>
-    r'c12d5fd3ccff8aedcade003a805c7fbe7a0a5468';
+String _$SegmentedIndexHash() => r'1418944afaf91f85aeabafa31ba89aeb89a24b7f';
 
-/// See also [TripInfoController].
-final tripInfoControllerProvider =
-    AutoDisposeAsyncNotifierProvider<TripInfoController, TripInfo>(
-  TripInfoController.new,
-  name: r'tripInfoControllerProvider',
+/// See also [SegmentedIndex].
+final segmentedIndexProvider = AutoDisposeNotifierProvider<SegmentedIndex, int>(
+  SegmentedIndex.new,
+  name: r'segmentedIndexProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$TripInfoControllerHash,
+      : _$SegmentedIndexHash,
 );
-typedef TripInfoControllerRef = AutoDisposeAsyncNotifierProviderRef<TripInfo>;
+typedef SegmentedIndexRef = AutoDisposeNotifierProviderRef<int>;
 
-abstract class _$TripInfoController extends AutoDisposeAsyncNotifier<TripInfo> {
+abstract class _$SegmentedIndex extends AutoDisposeNotifier<int> {
   @override
-  FutureOr<TripInfo> build();
+  int build();
 }
