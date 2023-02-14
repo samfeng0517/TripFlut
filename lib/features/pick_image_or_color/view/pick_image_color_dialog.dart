@@ -9,9 +9,9 @@ import 'color_picker_view.dart';
 import 'pexels_image_view.dart';
 
 Future<dynamic> showPickImageColorDialog(BuildContext context) async {
-  return await showDialog(
+  return await showGeneralDialog(
     context: context,
-    builder: (context) => LayoutBuilder(
+    pageBuilder: (context, _, __) => LayoutBuilder(
       builder: (context, constraints) {
         var windowType = getWindowType(context);
         switch (windowType) {
