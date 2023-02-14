@@ -29,4 +29,16 @@ class PexelsImagesRepository {
     return List.from(
         response.data['photos'].map((item) => PexelsPhoto.fromJson(item)));
   }
+
+  Future<List<PexelsPhoto>> fetchFeaturedImageList(int pageKey) async {
+    var response = await _dio.get(
+      'https://api.pexels.com/v1/curated',
+      queryParameters: {
+        'page': pageKey,
+      },
+    );
+
+    return List.from(
+        response.data['photos'].map((item) => PexelsPhoto.fromJson(item)));
+  }
 }

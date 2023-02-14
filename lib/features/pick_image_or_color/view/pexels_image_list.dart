@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -10,6 +9,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 
 import '../model/pexels_photo.dart';
 import '../provider/pexels_images_repository.dart';
+import 'pexels_image_item.dart';
 
 class PexelsImageList extends ConsumerStatefulWidget {
   const PexelsImageList({super.key});
@@ -24,7 +24,7 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
   final PagingController<int, PexelsPhoto> _pagingController =
       PagingController(firstPageKey: 1);
 
-  String _keyWord = 'travel';
+  String _keyWord = '';
   String _locale = 'en-US';
 
   @override
@@ -35,12 +35,19 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
 
   Future<void> _fetchPage(int pageKey) async {
     try {
-      final newItems =
-          await ref.read(pexelsImagesRepoProvider).fetchImageSearchList(
-                keyWord: _keyWord,
-                pageKey: pageKey,
-                locale: _locale,
-              );
+      List<PexelsPhoto> newItems;
+      if (_keyWord.isNotEmpty) {
+        newItems =
+            await ref.read(pexelsImagesRepoProvider).fetchImageSearchList(
+                  keyWord: _keyWord,
+                  pageKey: pageKey,
+                  locale: _locale,
+                );
+      } else {
+        newItems = await ref
+            .read(pexelsImagesRepoProvider)
+            .fetchFeaturedImageList(pageKey);
+      }
 
       final isLastPage = newItems.length < _pageSize;
       if (isLastPage) {
@@ -77,38 +84,8 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
             keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(horizontal: 24),
             builderDelegate: PagedChildBuilderDelegate<PexelsPhoto>(
-              itemBuilder: (context, item, index) => Card(
-                elevation: 0,
-                color: Theme.of(context).colorScheme.surfaceVariant,
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(12),
-                            bottomRight: Radius.circular(12),
-                          ),
-                        ),
-                        clipBehavior: Clip.antiAlias,
-                        width: double.infinity,
-                        child: CachedNetworkImage(
-                          imageUrl: item.src!.medium!,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        item.photographer ?? '',
-                        maxLines: 1,
-                      ),
-                    ),
-                  ],
-                ),
+              itemBuilder: (context, item, index) => PexelsImageItem(
+                pexelsPhoto: item,
               ),
               firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
                 title: context.loc.error_title,
@@ -146,8 +123,7 @@ class _PexelsImageListState extends ConsumerState<PexelsImageList> {
       const Duration(milliseconds: 500),
       () {
         if (value.isEmpty) {
-          _keyWord = 'travel';
-          _locale = 'en-US';
+          _keyWord = '';
         } else {
           _keyWord = value;
           Locale mylocale = Localizations.localeOf(context);
