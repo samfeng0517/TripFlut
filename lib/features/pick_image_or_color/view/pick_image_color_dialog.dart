@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
-import 'pexels_image_list.dart';
+import 'pexels_image_view.dart';
 
 Future<dynamic> showPickImageColorDialog(BuildContext context) async {
   return await showDialog(
@@ -95,7 +95,7 @@ class PickImageColorView extends ConsumerWidget {
               ),
             ),
             const Expanded(
-              child: PexelsImageList(),
+              child: PexelsImageView(),
             ),
           ],
         ),

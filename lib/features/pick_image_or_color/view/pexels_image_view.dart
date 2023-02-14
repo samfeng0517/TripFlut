@@ -11,15 +11,15 @@ import '../model/pexels_photo.dart';
 import '../provider/pexels_images_repository.dart';
 import 'pexels_image_item.dart';
 
-class PexelsImageList extends ConsumerStatefulWidget {
-  const PexelsImageList({super.key});
+class PexelsImageView extends ConsumerStatefulWidget {
+  const PexelsImageView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
       _PexelsImageListState();
 }
 
-class _PexelsImageListState extends ConsumerState<PexelsImageList> {
+class _PexelsImageListState extends ConsumerState<PexelsImageView> {
   static const _pageSize = 15;
   final PagingController<int, PexelsPhoto> _pagingController =
       PagingController(firstPageKey: 1);
