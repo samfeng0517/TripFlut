@@ -26,9 +26,16 @@ class _ColorPickerViewState extends State<ColorPickerView> {
   @override
   Widget build(BuildContext context) {
     final children = [
-      ColorPicker(
-        pickerColor: pickerColor,
-        onColorChanged: changeColor,
+      Expanded(
+        child: MaterialPicker(
+          pickerColor: pickerColor,
+          onColorChanged: changeColor,
+          // portraitOnly: true,
+          enableLabel: true,
+        ),
+      ),
+      const SizedBox.square(
+        dimension: 16,
       ),
       FilledButton(
         child: Text(context.loc.apply),
@@ -36,21 +43,24 @@ class _ColorPickerViewState extends State<ColorPickerView> {
       ),
     ];
 
-    return OrientationBuilder(
-      builder: (_, orientation) {
-        switch (orientation) {
-          case Orientation.portrait:
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: children,
-            );
-          case Orientation.landscape:
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: children,
-            );
-        }
-      },
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: OrientationBuilder(
+        builder: (_, orientation) {
+          switch (orientation) {
+            case Orientation.portrait:
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: children,
+              );
+            case Orientation.landscape:
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: children,
+              );
+          }
+        },
+      ),
     );
   }
 }
