@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_trip_controller.dart';
+part of 'trip_info_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,23 +29,21 @@ class _SystemHash {
   }
 }
 
-String _$CreateTripControllerHash() =>
-    r'30527700efa097a094bc7606f84372a1974e0e93';
+String _$TripInfoControllerHash() =>
+    r'bb7ee7b3348c4d3b9229200c672053738f6b302a';
 
-/// See also [CreateTripController].
-final createTripControllerProvider =
-    AutoDisposeAsyncNotifierProvider<CreateTripController, TripDraft>(
-  CreateTripController.new,
-  name: r'createTripControllerProvider',
+/// See also [TripInfoController].
+final tripInfoControllerProvider =
+    AutoDisposeAsyncNotifierProvider<TripInfoController, TripInfo>(
+  TripInfoController.new,
+  name: r'tripInfoControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$CreateTripControllerHash,
+      : _$TripInfoControllerHash,
 );
-typedef CreateTripControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<TripDraft>;
+typedef TripInfoControllerRef = AutoDisposeAsyncNotifierProviderRef<TripInfo>;
 
-abstract class _$CreateTripController
-    extends AutoDisposeAsyncNotifier<TripDraft> {
+abstract class _$TripInfoController extends AutoDisposeAsyncNotifier<TripInfo> {
   @override
-  FutureOr<TripDraft> build();
+  FutureOr<TripInfo> build();
 }

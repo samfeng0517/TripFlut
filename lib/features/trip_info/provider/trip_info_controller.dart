@@ -1,13 +1,14 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:tripflut/features/create_trip/model/trip_draft.dart';
 
-part 'create_trip_controller.g.dart';
+import '../model/trip_info.dart';
+
+part 'trip_info_controller.g.dart';
 
 @riverpod
-class CreateTripController extends _$CreateTripController {
+class TripInfoController extends _$TripInfoController {
   @override
-  FutureOr<TripDraft> build() async {
-    return TripDraft();
+  FutureOr<TripInfo> build() async {
+    return TripInfo();
   }
 
   void setTripTitle(String text) {

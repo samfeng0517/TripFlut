@@ -1,15 +1,16 @@
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tripflut/features/create_trip/provider/create_trip_controller.dart';
-import 'package:tripflut/features/create_trip/view/create_trip_form.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
-class CreateTripDialog extends ConsumerWidget {
+import '../provider/trip_info_controller.dart';
+import 'trip_info_form.dart';
+
+class TripInfoDialog extends ConsumerWidget {
   final void Function()? closeOnPressed;
   final void Function()? actionOnPressed;
 
-  const CreateTripDialog({
+  const TripInfoDialog({
     required this.closeOnPressed,
     required this.actionOnPressed,
     super.key,
@@ -17,7 +18,7 @@ class CreateTripDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(createTripControllerProvider);
+    final controller = ref.watch(tripInfoControllerProvider);
 
     var child = Container(
       constraints: const BoxConstraints(maxHeight: 560, maxWidth: 560),
@@ -50,7 +51,7 @@ class CreateTripDialog extends ConsumerWidget {
               ],
             ),
             const Expanded(
-              child: CreateTripForm(),
+              child: TripInfoForm(),
             ),
           ],
         ),

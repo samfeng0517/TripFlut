@@ -7,7 +7,8 @@ import 'package:tripflut/utils/app_localizations_context.dart';
 import '../../../common_widgets/floating_add_button/floating_add_button.dart';
 import '../../../common_widgets/floating_add_button/floating_add_button_extended.dart';
 import '../../../common_widgets/floating_add_button/floating_add_button_large.dart';
-import '../../create_trip/view/create_trip_dialog.dart';
+
+import '../../trip_info/view/trip_info_dialog.dart';
 import '../model/trip.dart';
 import 'trip_card.dart';
 
@@ -131,7 +132,7 @@ class TripListPage extends StatelessWidget {
         alignment: alignment,
         child: child,
       ),
-      pageBuilder: (context, _, __) => CreateTripDialog(
+      pageBuilder: (context, _, __) => TripInfoDialog(
         closeOnPressed: () => context.pop(),
         actionOnPressed: () {},
       ),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'trip_draft.dart';
+part of 'trip_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TripDraft {
+mixin _$TripInfo {
   String? get title => throw _privateConstructorUsedError;
   DateTime? get startTime => throw _privateConstructorUsedError;
   DateTime? get endTime => throw _privateConstructorUsedError;
@@ -23,14 +23,14 @@ mixin _$TripDraft {
   String? get imgPath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TripDraftCopyWith<TripDraft> get copyWith =>
+  $TripInfoCopyWith<TripInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TripDraftCopyWith<$Res> {
-  factory $TripDraftCopyWith(TripDraft value, $Res Function(TripDraft) then) =
-      _$TripDraftCopyWithImpl<$Res, TripDraft>;
+abstract class $TripInfoCopyWith<$Res> {
+  factory $TripInfoCopyWith(TripInfo value, $Res Function(TripInfo) then) =
+      _$TripInfoCopyWithImpl<$Res, TripInfo>;
   @useResult
   $Res call(
       {String? title,
@@ -41,9 +41,9 @@ abstract class $TripDraftCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TripDraftCopyWithImpl<$Res, $Val extends TripDraft>
-    implements $TripDraftCopyWith<$Res> {
-  _$TripDraftCopyWithImpl(this._value, this._then);
+class _$TripInfoCopyWithImpl<$Res, $Val extends TripInfo>
+    implements $TripInfoCopyWith<$Res> {
+  _$TripInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -85,10 +85,10 @@ class _$TripDraftCopyWithImpl<$Res, $Val extends TripDraft>
 }
 
 /// @nodoc
-abstract class _$$_TripDraftCopyWith<$Res> implements $TripDraftCopyWith<$Res> {
-  factory _$$_TripDraftCopyWith(
-          _$_TripDraft value, $Res Function(_$_TripDraft) then) =
-      __$$_TripDraftCopyWithImpl<$Res>;
+abstract class _$$_TripInfoCopyWith<$Res> implements $TripInfoCopyWith<$Res> {
+  factory _$$_TripInfoCopyWith(
+          _$_TripInfo value, $Res Function(_$_TripInfo) then) =
+      __$$_TripInfoCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +100,11 @@ abstract class _$$_TripDraftCopyWith<$Res> implements $TripDraftCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TripDraftCopyWithImpl<$Res>
-    extends _$TripDraftCopyWithImpl<$Res, _$_TripDraft>
-    implements _$$_TripDraftCopyWith<$Res> {
-  __$$_TripDraftCopyWithImpl(
-      _$_TripDraft _value, $Res Function(_$_TripDraft) _then)
+class __$$_TripInfoCopyWithImpl<$Res>
+    extends _$TripInfoCopyWithImpl<$Res, _$_TripInfo>
+    implements _$$_TripInfoCopyWith<$Res> {
+  __$$_TripInfoCopyWithImpl(
+      _$_TripInfo _value, $Res Function(_$_TripInfo) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$_TripDraftCopyWithImpl<$Res>
     Object? color = freezed,
     Object? imgPath = freezed,
   }) {
-    return _then(_$_TripDraft(
+    return _then(_$_TripInfo(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -143,8 +143,8 @@ class __$$_TripDraftCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TripDraft extends _TripDraft {
-  _$_TripDraft(
+class _$_TripInfo extends _TripInfo {
+  _$_TripInfo(
       {this.title, this.startTime, this.endTime, this.color, this.imgPath})
       : super._();
 
@@ -161,14 +161,14 @@ class _$_TripDraft extends _TripDraft {
 
   @override
   String toString() {
-    return 'TripDraft(title: $title, startTime: $startTime, endTime: $endTime, color: $color, imgPath: $imgPath)';
+    return 'TripInfo(title: $title, startTime: $startTime, endTime: $endTime, color: $color, imgPath: $imgPath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TripDraft &&
+            other is _$_TripInfo &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
@@ -184,18 +184,18 @@ class _$_TripDraft extends _TripDraft {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TripDraftCopyWith<_$_TripDraft> get copyWith =>
-      __$$_TripDraftCopyWithImpl<_$_TripDraft>(this, _$identity);
+  _$$_TripInfoCopyWith<_$_TripInfo> get copyWith =>
+      __$$_TripInfoCopyWithImpl<_$_TripInfo>(this, _$identity);
 }
 
-abstract class _TripDraft extends TripDraft {
-  factory _TripDraft(
+abstract class _TripInfo extends TripInfo {
+  factory _TripInfo(
       {final String? title,
       final DateTime? startTime,
       final DateTime? endTime,
       final int? color,
-      final String? imgPath}) = _$_TripDraft;
-  _TripDraft._() : super._();
+      final String? imgPath}) = _$_TripInfo;
+  _TripInfo._() : super._();
 
   @override
   String? get title;
@@ -209,6 +209,6 @@ abstract class _TripDraft extends TripDraft {
   String? get imgPath;
   @override
   @JsonKey(ignore: true)
-  _$$_TripDraftCopyWith<_$_TripDraft> get copyWith =>
+  _$$_TripInfoCopyWith<_$_TripInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

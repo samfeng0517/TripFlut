@@ -6,14 +6,14 @@ import 'package:intl/intl.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
 import '../../pick_image_or_color/view/pick_image_color_dialog.dart';
-import '../provider/create_trip_controller.dart';
+import '../provider/trip_info_controller.dart';
 
-class CreateTripForm extends HookConsumerWidget {
-  const CreateTripForm({super.key});
+class TripInfoForm extends HookConsumerWidget {
+  const TripInfoForm({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(createTripControllerProvider);
+    final controller = ref.watch(tripInfoControllerProvider);
     final textEditingController =
         useTextEditingController(text: controller.value?.title);
 
@@ -34,7 +34,7 @@ class CreateTripForm extends HookConsumerWidget {
               ),
               controller: textEditingController,
               onChanged: (value) => ref
-                  .read(createTripControllerProvider.notifier)
+                  .read(tripInfoControllerProvider.notifier)
                   .setTripTitle(value),
             ),
           ),
@@ -111,7 +111,7 @@ class CreateTripForm extends HookConsumerWidget {
     }
 
     DateTimeRange? initialDateRange;
-    final controller = ref.watch(createTripControllerProvider);
+    final controller = ref.watch(tripInfoControllerProvider);
     if (controller.value?.startTime != null) {
       initialDateRange = DateTimeRange(
         start: controller.value!.startTime!,
@@ -137,7 +137,7 @@ class CreateTripForm extends HookConsumerWidget {
 
     if (result != null) {
       ref
-          .read(createTripControllerProvider.notifier)
+          .read(tripInfoControllerProvider.notifier)
           .setTripRange(result.start, result.end);
     }
   }
