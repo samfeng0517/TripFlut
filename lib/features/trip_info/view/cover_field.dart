@@ -53,7 +53,10 @@ class CoverField extends ConsumerWidget {
                     ),
                   ),
                 if (!hasPexelsPhoto && !hasColor)
-                  Text(context.loc.choose_picture_or_color),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(context.loc.choose_picture_or_color),
+                  ),
               ],
             ),
           ),
