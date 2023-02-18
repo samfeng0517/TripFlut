@@ -49,7 +49,8 @@ class TripCard extends ConsumerWidget {
               child: Text(
                 trip.title,
                 style: Theme.of(context).textTheme.displaySmall,
-                maxLines: 2,
+                maxLines: 1,
+                overflow: TextOverflow.fade,
               ),
             ),
             Padding(
@@ -63,9 +64,9 @@ class TripCard extends ConsumerWidget {
                   const SizedBox(
                     width: 4,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.arrow_forward,
-                    size: Theme.of(context).textTheme.titleLarge?.fontSize,
+                    size: 24,
                   ),
                   const SizedBox(
                     width: 4,
