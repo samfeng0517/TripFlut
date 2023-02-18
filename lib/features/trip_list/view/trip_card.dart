@@ -56,25 +56,28 @@ class TripCard extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     DateFormat.Md().format(trip.startTime),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  const Icon(
-                    Icons.arrow_forward,
-                    size: 24,
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    DateFormat.Md().format(trip.endTime),
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
+                  if (trip.endTime != trip.startTime) ...[
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    const Icon(
+                      Icons.keyboard_double_arrow_right,
+                      size: 26,
+                    ),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      DateFormat.Md().format(trip.endTime),
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ],
                 ],
               ),
             ),
