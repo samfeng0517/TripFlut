@@ -13,18 +13,18 @@
     "close": "Close",
     "create_new_trip": "Create new trip",
     "@create_new_trip": {
-        "description": "Title for create_trip_dialog"
+        "description": "Title for trip_info"
     },
     "start": "Start",
     "end": "End",
     "set_dates": "Set Dates",
     "@set_dates": {
-        "description": "Set dates button hint in create_trip_dialog"
+        "description": "Set dates button hint in trip_info"
     },
     "cover": "Cover",
     "choose_picture_or_color": "Choose image or color",
     "@choose_picture_or_color": {
-        "description": "showPickImageColorDialog button hint in create_trip_dialog"
+        "description": "showPickImageColorDialog button hint in trip_info"
     },
     "image": "Image",
     "color": "Color",
