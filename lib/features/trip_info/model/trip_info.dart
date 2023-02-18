@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../pick_image_or_color/model/pexels_photo_src.dart';
+
 part 'trip_info.freezed.dart';
 
 @freezed
@@ -11,7 +13,7 @@ class TripInfo with _$TripInfo {
     DateTime? startTime,
     DateTime? endTime,
     int? color,
-    String? imgPath,
+    PexelsPhotoSrc? pexelsPhotoSrc,
   }) = _TripInfo;
 
   bool get isFinished {

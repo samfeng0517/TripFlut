@@ -8,8 +8,8 @@ import '../provider/segmented_index_provider.dart';
 import 'color_picker_view.dart';
 import 'pexels_image_view.dart';
 
-Future<dynamic> showPickImageColorDialog(BuildContext context) async {
-  return await showGeneralDialog(
+Future<void> showPickImageColorDialog(BuildContext context) async {
+  await showGeneralDialog(
     context: context,
     pageBuilder: (context, _, __) => LayoutBuilder(
       builder: (context, constraints) {

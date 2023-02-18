@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tripflut/utils/app_localizations_context.dart';
 
-class ColorPickerView extends StatefulWidget {
+import '../../provider/trip_info_controller.dart';
+
+class ColorPickerView extends ConsumerStatefulWidget {
   final Color pickerColor;
   const ColorPickerView(this.pickerColor, {super.key});
 
   @override
-  State<ColorPickerView> createState() => _ColorPickerViewState();
+  ConsumerState<ColorPickerView> createState() => _ColorPickerViewState();
 }
 
-class _ColorPickerViewState extends State<ColorPickerView> {
+class _ColorPickerViewState extends ConsumerState<ColorPickerView> {
   late Color pickerColor;
 
   @override
@@ -30,7 +34,6 @@ class _ColorPickerViewState extends State<ColorPickerView> {
         child: MaterialPicker(
           pickerColor: pickerColor,
           onColorChanged: changeColor,
-          // portraitOnly: true,
           enableLabel: true,
         ),
       ),
@@ -39,7 +42,12 @@ class _ColorPickerViewState extends State<ColorPickerView> {
       ),
       FilledButton(
         child: Text(context.loc.apply),
-        onPressed: () {},
+        onPressed: () {
+          ref
+              .read(tripInfoControllerProvider.notifier)
+              .setTripColor(pickerColor);
+          context.pop();
+        },
       ),
     ];
 

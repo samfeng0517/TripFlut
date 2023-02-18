@@ -20,7 +20,7 @@ mixin _$TripInfo {
   DateTime? get startTime => throw _privateConstructorUsedError;
   DateTime? get endTime => throw _privateConstructorUsedError;
   int? get color => throw _privateConstructorUsedError;
-  String? get imgPath => throw _privateConstructorUsedError;
+  PexelsPhotoSrc? get pexelsPhotoSrc => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TripInfoCopyWith<TripInfo> get copyWith =>
@@ -37,7 +37,7 @@ abstract class $TripInfoCopyWith<$Res> {
       DateTime? startTime,
       DateTime? endTime,
       int? color,
-      String? imgPath});
+      PexelsPhotoSrc? pexelsPhotoSrc});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$TripInfoCopyWithImpl<$Res, $Val extends TripInfo>
     Object? startTime = freezed,
     Object? endTime = freezed,
     Object? color = freezed,
-    Object? imgPath = freezed,
+    Object? pexelsPhotoSrc = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
@@ -76,10 +76,10 @@ class _$TripInfoCopyWithImpl<$Res, $Val extends TripInfo>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as int?,
-      imgPath: freezed == imgPath
-          ? _value.imgPath
-          : imgPath // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pexelsPhotoSrc: freezed == pexelsPhotoSrc
+          ? _value.pexelsPhotoSrc
+          : pexelsPhotoSrc // ignore: cast_nullable_to_non_nullable
+              as PexelsPhotoSrc?,
     ) as $Val);
   }
 }
@@ -96,7 +96,7 @@ abstract class _$$_TripInfoCopyWith<$Res> implements $TripInfoCopyWith<$Res> {
       DateTime? startTime,
       DateTime? endTime,
       int? color,
-      String? imgPath});
+      PexelsPhotoSrc? pexelsPhotoSrc});
 }
 
 /// @nodoc
@@ -114,7 +114,7 @@ class __$$_TripInfoCopyWithImpl<$Res>
     Object? startTime = freezed,
     Object? endTime = freezed,
     Object? color = freezed,
-    Object? imgPath = freezed,
+    Object? pexelsPhotoSrc = freezed,
   }) {
     return _then(_$_TripInfo(
       title: freezed == title
@@ -133,10 +133,10 @@ class __$$_TripInfoCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as int?,
-      imgPath: freezed == imgPath
-          ? _value.imgPath
-          : imgPath // ignore: cast_nullable_to_non_nullable
-              as String?,
+      pexelsPhotoSrc: freezed == pexelsPhotoSrc
+          ? _value.pexelsPhotoSrc
+          : pexelsPhotoSrc // ignore: cast_nullable_to_non_nullable
+              as PexelsPhotoSrc?,
     ));
   }
 }
@@ -145,7 +145,11 @@ class __$$_TripInfoCopyWithImpl<$Res>
 
 class _$_TripInfo extends _TripInfo {
   _$_TripInfo(
-      {this.title, this.startTime, this.endTime, this.color, this.imgPath})
+      {this.title,
+      this.startTime,
+      this.endTime,
+      this.color,
+      this.pexelsPhotoSrc})
       : super._();
 
   @override
@@ -157,11 +161,11 @@ class _$_TripInfo extends _TripInfo {
   @override
   final int? color;
   @override
-  final String? imgPath;
+  final PexelsPhotoSrc? pexelsPhotoSrc;
 
   @override
   String toString() {
-    return 'TripInfo(title: $title, startTime: $startTime, endTime: $endTime, color: $color, imgPath: $imgPath)';
+    return 'TripInfo(title: $title, startTime: $startTime, endTime: $endTime, color: $color, pexelsPhotoSrc: $pexelsPhotoSrc)';
   }
 
   @override
@@ -174,12 +178,13 @@ class _$_TripInfo extends _TripInfo {
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.color, color) || other.color == color) &&
-            (identical(other.imgPath, imgPath) || other.imgPath == imgPath));
+            (identical(other.pexelsPhotoSrc, pexelsPhotoSrc) ||
+                other.pexelsPhotoSrc == pexelsPhotoSrc));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, startTime, endTime, color, imgPath);
+  int get hashCode => Object.hash(
+      runtimeType, title, startTime, endTime, color, pexelsPhotoSrc);
 
   @JsonKey(ignore: true)
   @override
@@ -194,7 +199,7 @@ abstract class _TripInfo extends TripInfo {
       final DateTime? startTime,
       final DateTime? endTime,
       final int? color,
-      final String? imgPath}) = _$_TripInfo;
+      final PexelsPhotoSrc? pexelsPhotoSrc}) = _$_TripInfo;
   _TripInfo._() : super._();
 
   @override
@@ -206,7 +211,7 @@ abstract class _TripInfo extends TripInfo {
   @override
   int? get color;
   @override
-  String? get imgPath;
+  PexelsPhotoSrc? get pexelsPhotoSrc;
   @override
   @JsonKey(ignore: true)
   _$$_TripInfoCopyWith<_$_TripInfo> get copyWith =>
